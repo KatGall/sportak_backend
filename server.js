@@ -4,11 +4,37 @@ const cors = require("cors");
 const workoutDao = require("./dao/workout-dao");
 const exerciseDao = require("./dao/exercise-dao");
 
+const {
+  createExerciseSchema,
+  updateExerciseSchema,
+  idSchema,
+} = require("./validation/exercise-validation");
+
+const {
+  createWorkoutSchema,
+  updateWorkoutSchema,
+} = require("./validation/workout-validation");
+
 const app = express();
 const port = 3000;
 
 app.use(cors());
 app.use(express.json());
+
+function validate(schema, dtoIn, res) {
+  const validationResult = schema.validate(dtoIn);
+
+  if (validationResult.error) {
+    res.status(400).json({
+      code: "dtoInIsNotValid",
+      message: validationResult.error.message,
+    });
+    return false;
+  }
+
+  return true;
+}
+
 app.get("/", (req, res) => {
   res.json({
     app: "SPORŤÁK backend",
@@ -16,15 +42,12 @@ app.get("/", (req, res) => {
   });
 });
 
+// EXERCISE
+
 app.post("/exercise/create", (req, res) => {
   const dtoIn = req.body;
 
-  if (!dtoIn.name) {
-    return res.status(400).json({
-      code: "dtoInIsNotValid",
-      message: "name is required",
-    });
-  }
+  if (!validate(createExerciseSchema, dtoIn, res)) return;
 
   const exercise = exerciseDao.create({
     name: dtoIn.name,
@@ -33,24 +56,19 @@ app.post("/exercise/create", (req, res) => {
 
   res.json(exercise);
 });
-app.get("/exercise/list", (req, res) => {
-  const exercises = exerciseDao.list();
 
+app.get("/exercise/list", (req, res) => {
   res.json({
-    exerciseList: exercises,
+    exerciseList: exerciseDao.list(),
   });
 });
+
 app.get("/exercise/get", (req, res) => {
-  const id = req.query.id;
+  const dtoIn = req.query;
 
-  if (!id) {
-    return res.status(400).json({
-      code: "dtoInIsNotValid",
-      message: "id is required",
-    });
-  }
+  if (!validate(idSchema, dtoIn, res)) return;
 
-  const exercise = exerciseDao.get(id);
+  const exercise = exerciseDao.get(dtoIn.id);
 
   if (!exercise) {
     return res.status(404).json({
@@ -61,15 +79,11 @@ app.get("/exercise/get", (req, res) => {
 
   res.json(exercise);
 });
+
 app.post("/exercise/update", (req, res) => {
   const dtoIn = req.body;
 
-  if (!dtoIn.id) {
-    return res.status(400).json({
-      code: "dtoInIsNotValid",
-      message: "id is required",
-    });
-  }
+  if (!validate(updateExerciseSchema, dtoIn, res)) return;
 
   const exercise = exerciseDao.update(dtoIn.id, {
     name: dtoIn.name,
@@ -85,15 +99,11 @@ app.post("/exercise/update", (req, res) => {
 
   res.json(exercise);
 });
+
 app.post("/exercise/delete", (req, res) => {
   const dtoIn = req.body;
 
-  if (!dtoIn.id) {
-    return res.status(400).json({
-      code: "dtoInIsNotValid",
-      message: "id is required",
-    });
-  }
+  if (!validate(idSchema, dtoIn, res)) return;
 
   const deleted = exerciseDao.remove(dtoIn.id);
 
@@ -108,15 +118,13 @@ app.post("/exercise/delete", (req, res) => {
 
   res.json({});
 });
+
+// WORKOUT
+
 app.post("/workout/create", (req, res) => {
   const dtoIn = req.body;
 
-  if (!dtoIn.name) {
-    return res.status(400).json({
-      code: "dtoInIsNotValid",
-      message: "name is required",
-    });
-  }
+  if (!validate(createWorkoutSchema, dtoIn, res)) return;
 
   const workout = workoutDao.create({
     name: dtoIn.name,
@@ -126,24 +134,19 @@ app.post("/workout/create", (req, res) => {
 
   res.json(workout);
 });
-app.get("/workout/list", (req, res) => {
-  const workouts = workoutDao.list();
 
+app.get("/workout/list", (req, res) => {
   res.json({
-    workoutList: workouts,
+    workoutList: workoutDao.list(),
   });
 });
+
 app.get("/workout/get", (req, res) => {
-  const id = req.query.id;
+  const dtoIn = req.query;
 
-  if (!id) {
-    return res.status(400).json({
-      code: "dtoInIsNotValid",
-      message: "id is required",
-    });
-  }
+  if (!validate(idSchema, dtoIn, res)) return;
 
-  const workout = workoutDao.get(id);
+  const workout = workoutDao.get(dtoIn.id);
 
   if (!workout) {
     return res.status(404).json({
@@ -154,15 +157,11 @@ app.get("/workout/get", (req, res) => {
 
   res.json(workout);
 });
+
 app.post("/workout/update", (req, res) => {
   const dtoIn = req.body;
 
-  if (!dtoIn.id) {
-    return res.status(400).json({
-      code: "dtoInIsNotValid",
-      message: "id is required",
-    });
-  }
+  if (!validate(updateWorkoutSchema, dtoIn, res)) return;
 
   const workout = workoutDao.update(dtoIn.id, {
     name: dtoIn.name,
@@ -179,15 +178,11 @@ app.post("/workout/update", (req, res) => {
 
   res.json(workout);
 });
+
 app.post("/workout/delete", (req, res) => {
   const dtoIn = req.body;
 
-  if (!dtoIn.id) {
-    return res.status(400).json({
-      code: "dtoInIsNotValid",
-      message: "id is required",
-    });
-  }
+  if (!validate(idSchema, dtoIn, res)) return;
 
   const deleted = workoutDao.remove(dtoIn.id);
 
@@ -200,6 +195,7 @@ app.post("/workout/delete", (req, res) => {
 
   res.json({});
 });
+
 app.listen(port, () => {
   console.log(`SPORŤÁK backend běží na http://localhost:${port}`);
 });
