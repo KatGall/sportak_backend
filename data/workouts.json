@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "id": "a1111111-1111-4111-8111-111111111111",
+    "name": "Trénink nohou",
+    "note": "Zaměřeno na spodní část těla.",
+    "exercises": [
+      {
+        "exerciseId": "1f3b7e61-ec7c-4d9c-9bb7-6f1ad3b1a111",
+        "sets": 3,
+        "repetitions": 12
+      },
+      {
+        "exerciseId": "4b45c0d9-5172-4b13-a71f-81bb3bb4d444",
+        "sets": 3,
+        "repetitions": 10
+      }
+    ]
+  },
+  {
+    "id": "b2222222-2222-4222-8222-222222222222",
+    "name": "Trénink středu těla",
+    "note": "Krátký trénink na břicho a stabilitu.",
+    "exercises": [
+      {
+        "exerciseId": "3c51f7aa-9e4d-476e-a6d2-5572b0c3c333",
+        "sets": 3,
+        "repetitions": 1
+      },
+      {
+        "exerciseId": "6a35b6c1-9f6d-4b7d-bdb5-17de7b6f6666",
+        "sets": 3,
+        "repetitions": 15
+      }
+    ]
+  },
+  {
+    "id": "c3333333-3333-4333-8333-333333333333",
+    "name": "Full body",
+    "note": "Komplexní trénink celého těla.",
+    "exercises": [
+      {
+        "exerciseId": "2a8d0b32-1b8e-4ec1-9c42-4c29d9a2b222",
+        "sets": 4,
+        "repetitions": 10
+      },
+      {
+        "exerciseId": "5e1e7d25-76a5-406f-88ef-3f77d8e5e555",
+        "sets": 3,
+        "repetitions": 8
+      },
+      {
+        "exerciseId": "9f6c5a11-bb18-41be-83c4-2b7f8f999999",
+        "sets": 4,
+        "repetitions": 6
+      }
+    ]
+  }
+]

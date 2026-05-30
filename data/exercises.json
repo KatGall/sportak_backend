@@ -1,17 +1,52 @@
 [
   {
-    "id": "7f0805b6-2a0f-4c54-935f-a469b1bade2b",
-    "name": "Push-ups",
-    "note": "Upper body"
+    "id": "1f3b7e61-ec7c-4d9c-9bb7-6f1ad3b1a111",
+    "name": "Dřepy",
+    "note": "Stůjte na šířku ramen, držte rovná záda a pomalu klesejte do podřepu."
   },
   {
-    "id": "8fcda75f-f96a-4d4a-8c82-d172bcdcd937",
-    "name": "Squats UPDATED",
-    "note": "Updated lower body exercise"
+    "id": "2a8d0b32-1b8e-4ec1-9c42-4c29d9a2b222",
+    "name": "Kliky",
+    "note": "Opřete se o dlaně a špičky nohou, tělo držte rovně a spouštějte hrudník k zemi."
   },
   {
-    "id": "4102bc04-c000-43e1-adea-adfe80ec765b",
-    "name": "test",
-    "note": ""
+    "id": "3c51f7aa-9e4d-476e-a6d2-5572b0c3c333",
+    "name": "Prkno",
+    "note": "Opřete se o předloktí a špičky nohou, zpevněte střed těla a držte rovnou linii."
+  },
+  {
+    "id": "4b45c0d9-5172-4b13-a71f-81bb3bb4d444",
+    "name": "Výpady",
+    "note": "Udělejte krok vpřed, pokrčte obě kolena a vraťte se zpět do stoje."
+  },
+  {
+    "id": "5e1e7d25-76a5-406f-88ef-3f77d8e5e555",
+    "name": "Angličáky",
+    "note": "Z podřepu přejděte do vzporu, proveďte klik, vraťte nohy pod sebe a vyskočte."
+  },
+  {
+    "id": "6a35b6c1-9f6d-4b7d-bdb5-17de7b6f6666",
+    "name": "Sedy-lehy",
+    "note": "Lehněte si na záda, pokrčte kolena a zvedejte trup směrem ke kolenům."
+  },
+  {
+    "id": "7d42f3b2-2e61-4a85-b13d-7b9ddf7a7777",
+    "name": "Přítahy na hrazdě",
+    "note": "Uchopte hrazdu, stáhněte lopatky a přitáhněte tělo nahoru."
+  },
+  {
+    "id": "8c9a8f1e-5d44-40c8-9ef6-9a91c1d88888",
+    "name": "Bench press",
+    "note": "Lehněte si na lavici, spusťte činku ke hrudníku a vytlačte ji zpět nahoru."
+  },
+  {
+    "id": "9f6c5a11-bb18-41be-83c4-2b7f8f999999",
+    "name": "Mrtvý tah",
+    "note": "S rovnými zády zvedněte činku ze země tahem přes nohy a kyčle."
+  },
+  {
+    "id": "0d7e91f2-24b0-47ab-a01e-0fd1234a0000",
+    "name": "Běh na místě",
+    "note": "Běžte na místě s aktivní prací paží a pravidelným dýcháním."
   }
 ]
